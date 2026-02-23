@@ -8,15 +8,16 @@
   <meta name="description" content="Personalized tutoring in Data Structures & Algorithms (C++/Java), High School & College Math, and Punjabi Language. Serving Surrey, Delta & online. Book a session today!">
   <meta name="keywords" content="tutoring Surrey BC, tutoring Delta BC, math tutor Surrey, DSA tutor, data structures algorithms tutor, Punjabi language tutor, coding interview prep, online tutor BC">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tutorpro.ca/">
+  
+  <link rel="canonical" href="https://tutorprobc.com/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tutorpro.ca/">
+  <meta property="og:url" content="https://tutorprobc.com/">
   <meta property="og:title" content="Expert Tutoring in Surrey & Delta | DSA, Math & Punjabi">
   <meta property="og:description" content="Personalized tutoring for DSA, Math, and Punjabi. Book your first session today.">
   <meta name="geo.region" content="CA-BC">
   <meta name="geo.placename" content="Surrey, British Columbia">
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"TutorPro","description":"Personalized tutoring in DSA, Math, and Punjabi in Surrey, Delta, and online.","url":"https://tutorpro.ca","address":{"@type":"PostalAddress","addressLocality":"Surrey","addressRegion":"BC","addressCountry":"CA"},"areaServed":[{"@type":"City","name":"Surrey"},{"@type":"City","name":"Delta"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"TutorPro","description":"Personalized tutoring in DSA, Math, and Punjabi in Surrey, Delta, and online.","url":"https://tutorprobc.com","address":{"@type":"PostalAddress","addressLocality":"Surrey","addressRegion":"BC","addressCountry":"CA"},"areaServed":[{"@type":"City","name":"Surrey"},{"@type":"City","name":"Delta"}]}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,10 +61,7 @@
       margin: 0;
       padding: 0;
     }
-    html {
-      /* Sets the root background to match the footer so bouncing on mobile doesn't flash white */
-      background-color: #020617; 
-    }
+    html { background-color: #020617; }
 
     /* ── Scroll reveal ── */
     .reveal,.reveal-l,.reveal-r { opacity:0; transition: opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1); }
@@ -140,7 +138,8 @@
     .hero-5 { animation:fadeIn .7s .7s ease-out both }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+<body class="bg-slate-950 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
 
 <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-lg border-b border-slate-200/80">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -265,7 +264,6 @@
     </div>
   </div> 
 </section>
-
 
 <section id="about" class="py-24 relative overflow-hidden bg-slate-50">
   <div class="absolute inset-0 pointer-events-none z-0">
@@ -510,7 +508,7 @@
       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
     </button>
     
-    <button onclick="smoothScroll('book')" class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-white text-slate-900 font-bold text-sm shadow-[0_8px_25px_rgba(0,0,0,.15)] hover:bg-slate-50 border border-slate-100 transition-all hover:-translate-y-1">
+    <button onclick="smoothScroll('book')" class="hidden sm:flex items-center gap-2 px-5 py-3.5 rounded-full bg-white text-slate-900 font-bold text-sm shadow-[0_8px_25px_rgba(0,0,0,.15)] hover:bg-slate-50 border border-slate-100 transition-all hover:-translate-y-1">
       Book Now
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
     </button>
@@ -551,7 +549,7 @@
 
 <script>
 // ── Helpers ──────────────────────────────────────────────────────
-const SITE_URL = 'https://tutorpro.ca'
+const SITE_URL = 'https://tutorprobc.com'
 
 function smoothScroll(id) {
   const el = document.getElementById(id)
@@ -600,10 +598,10 @@ document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => revealObs
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
   
-  // Logic to hide the Book Now FAB when the booking form is on the screen
+  // Logic to hide the FAB completely when the booking form is on the screen (for tablets/desktops)
   const bookEl = document.getElementById('book');
   const bookTop = bookEl.getBoundingClientRect().top;
-  const isBookVisible = bookTop < (window.innerHeight - 150); // Checks if form section has scrolled into view
+  const isBookVisible = bookTop < (window.innerHeight - 150); 
   
   // Only show the FAB if user has scrolled down >300px AND the form is NOT visible yet
   document.getElementById('fab').classList.toggle('show', window.scrollY > 300 && !isBookVisible);
@@ -647,7 +645,8 @@ function toggleFaq(btn) {
 }
 
 // ── Social platforms ──────────────────────────────────────────────
-const SHARE_TEXT = 'Check out TutorPro! Expert tutoring for DSA, Math & Punjabi in Surrey, Delta & online.'
+const SHARE_TEXT = 'Looking for a great tutor? Check out TutorPro for expert help with Data Structures & Algorithms, Math, and Punjabi in BC & online! 🚀'
+
 const PLATFORMS = [
   { name:'WhatsApp',  color:'#25D366', shareUrl: `https://wa.me/?text=${encodeURIComponent(SHARE_TEXT+' '+SITE_URL)}`,
     icon:`<svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>` },
@@ -671,10 +670,12 @@ PLATFORMS.forEach(p => {
   spEl.appendChild(a)
 })
 
-// Copy link
+// Copy link & message
 document.getElementById('shareUrl').textContent = SITE_URL
 function copyShareLink() {
-  navigator.clipboard.writeText(SITE_URL)
+  const fullMessage = `${SHARE_TEXT} ${SITE_URL}`
+  navigator.clipboard.writeText(fullMessage)
+  
   const btn = document.getElementById('copyShareBtn')
   const orig = btn.textContent
   btn.textContent = 'Copied!'; btn.style.backgroundColor='#10b981'
