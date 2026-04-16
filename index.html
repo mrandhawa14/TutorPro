@@ -416,8 +416,8 @@
               <div><label class="flabel">Student Name *</label><input type="text" name="student_name" required placeholder="Arjun Sharma" class="finput"></div>
               <div><label class="flabel">Parent / Guardian</label><input type="text" name="parent_name" placeholder="(if under 18)" class="finput"></div>
             </div>
-            <div><label class="flabel">Email *</label><input type="email" name="email" required placeholder="you@email.com" class="finput"></div>
-            <div><label class="flabel">Phone</label><input type="tel" name="phone" placeholder="(604) 555-0100" class="finput"></div>
+            <div><label class="flabel">Email *</label><input type="email" name="email" required placeholder="you@email.com" class="finput" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Please enter a valid email address (e.g., name@example.com)"></div>
+            <div><label class="flabel">Phone</label><input type="tel" name="phone" placeholder="(604) 555-0100" class="finput" pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$" title="Please enter a valid 10-digit phone number (e.g., 604-555-0100 or (604) 555-0100)"></div>
             <div><label class="flabel">Subject *</label>
               <select name="subject" required class="finput">
                 <option value="" disabled selected>Select a subject…</option>
