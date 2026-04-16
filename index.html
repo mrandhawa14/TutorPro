@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Expert Tutoring in Surrey & Delta | DSA, Math & Punjabi | TutorPro</title>
   <meta name="description" content="Personalized tutoring in Data Structures & Algorithms (C++/Java), High School & College Math, and Punjabi Language. Serving Surrey, Delta & online. Book a session today!">
   <meta name="keywords" content="tutoring Surrey BC, tutoring Delta BC, math tutor Surrey, DSA tutor, data structures algorithms tutor, Punjabi language tutor, coding interview prep, online tutor BC">
   <meta name="robots" content="index, follow">
-  
   <link rel="canonical" href="https://tutorprobc.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tutorprobc.com/">
@@ -21,24 +19,23 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['DM Sans','sans-serif'], heading: ['Sora','sans-serif'] },
-          colors: { brand: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca' } },
-          animation: {
-            'float-slow':'float 6s ease-in-out infinite',
-            'float-fast':'float 4s ease-in-out infinite reverse',
-            'blob':'blob 15s infinite',
-            'dash-flow':'dash 30s linear infinite',
+          fontFamily: {
+            sans: ['IBM Plex Sans', 'sans-serif'],
+            display: ['Playfair Display', 'serif'],
+            mono: ['IBM Plex Mono', 'monospace']
           },
-          keyframes: {
-            float:  {'0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-14px)'}},
-            blob:   {'0%':{transform:'translate(0,0) scale(1)'},'33%':{transform:'translate(30px,-50px) scale(1.05)'},'66%':{transform:'translate(-20px,20px) scale(0.95)'},'100%':{transform:'translate(0,0) scale(1)'}},
-            dash:   {'0%':{strokeDashoffset:'1000'},'100%':{strokeDashoffset:'0'}},
+          colors: {
+            ink: { 950: '#0a0a0f', 900: '#12121a', 800: '#1c1c28', 700: '#2a2a3d' },
+            sage: { 400: '#8fb5a0', 500: '#6d9b82', 600: '#527a65' },
+            amber: { 400: '#f5c842', 500: '#e8b520', 600: '#c49a10' },
+            cream: { 50: '#faf8f3', 100: '#f4f0e6', 200: '#e8e2d0' }
           }
         }
       }
@@ -46,591 +43,752 @@
   </script>
 
   <style>
-    *{box-sizing:border-box}
-    ::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:#f8fafc}::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}::-webkit-scrollbar-thumb:hover{background:#94a3b8}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Hide scrollbar for mobile carousel */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0f; }
+    ::-webkit-scrollbar-thumb { background: #2a2a3d; border-radius: 3px; }
+
+    html { background: #0a0a0f; }
+    body { font-family: 'IBM Plex Sans', sans-serif; overflow-x: hidden; color: #f4f0e6; }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Reveal animations */
+    .reveal, .reveal-l, .reveal-r {
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal { transform: translateY(24px); }
+    .reveal-l { transform: translateX(-24px); }
+    .reveal-r { transform: translateX(24px); }
+    .reveal.on, .reveal-l.on, .reveal-r.on { opacity: 1; transform: none; }
+
+    /* Nav */
+    #navbar { transition: background .3s, box-shadow .3s; }
+    #navbar.scrolled { background: rgba(10,10,15,0.97) !important; box-shadow: 0 1px 0 rgba(255,255,255,0.06); }
+
+    /* Hero text */
+    @keyframes slideUp { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:none; } }
+    @keyframes fadeIn  { from { opacity:0; } to { opacity:1; } }
+    .h1 { animation: slideUp .75s .1s ease-out both; }
+    .h2 { animation: slideUp .75s .25s ease-out both; }
+    .h3 { animation: slideUp .65s .4s ease-out both; }
+    .h4 { animation: slideUp .65s .52s ease-out both; }
+    .h5 { animation: fadeIn .8s .7s ease-out both; }
+
+    /* Marquee */
+    .marquee-track { display: flex; width: max-content; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-anim { animation: marquee 28s linear infinite; }
+
+    /* Subject card */
+    .subject-card {
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: border-color .25s, transform .25s;
+    }
+    .subject-card:hover { border-color: rgba(143,181,160,0.35); transform: translateY(-3px); }
+
+    /* Testimonial card */
+    .tcard { border: 1px solid rgba(255,255,255,0.07); transition: border-color .25s; }
+    .tcard:hover { border-color: rgba(245,200,66,0.25); }
+
+    /* CTA button */
+    .btn-primary {
+      background: #8fb5a0;
+      color: #0a0a0f;
+      font-weight: 600;
+      letter-spacing: .01em;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-primary:hover {
+      background: #a3c9b5;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(143,181,160,.3);
+    }
+    .btn-primary:active { transform: scale(.98); }
+
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.7);
+      transition: border-color .2s, color .2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+
+    /* Pill tags */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* Divider rule */
+    .rule { height: 1px; background: rgba(255,255,255,0.07); }
+
+    /* FAQ */
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height .38s cubic-bezier(.16,1,.3,1), padding .2s; }
+    .faq-body.open { max-height: 260px; }
+    .faq-chevron { transition: transform .3s; }
+    .faq-chevron.open { transform: rotate(180deg); }
+    .faq-item { border: 1px solid rgba(255,255,255,0.07); transition: border-color .2s; }
+    .faq-item.open { border-color: rgba(143,181,160,0.3); }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+      background: rgba(10,10,15,0.82); backdrop-filter: blur(16px);
+      opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: #1c1c28; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1.25rem; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto;
+      transform: scale(.94) translateY(16px);
+      transition: transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    .modal-overlay.open .modal-box { transform: none; }
+
+    /* FAB */
+    #fab {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 100;
+      transition: transform .4s cubic-bezier(.16,1,.3,1), opacity .3s;
+      opacity: 0; pointer-events: none; transform: translateY(80px);
+    }
+    #fab.show { transform: translateY(0); opacity: 1; pointer-events: all; }
+
+    /* Form inputs */
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: #f4f0e6;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.3); }
+    .form-input:focus { border-color: rgba(143,181,160,0.5); }
+    select.form-input option { background: #1c1c28; }
+    .form-label { display: block; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+
+    /* Scrollbar hide */
     .hide-scroll::-webkit-scrollbar { display: none; }
     .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
-    html, body { 
-      font-family:'DM Sans',sans-serif; 
-      overflow-x:hidden; 
-      width:100%; 
-      position:relative; 
-      margin: 0;
-      padding: 0;
-    }
-    html { background-color: #020617; }
-
-    /* ── Scroll reveal ── */
-    .reveal,.reveal-l,.reveal-r { opacity:0; transition: opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1); }
-    .reveal           { transform:translateY(28px) }
-    .reveal-l         { transform:translateX(-28px) }
-    .reveal-r         { transform:translateX(28px) }
-    .reveal.on,.reveal-l.on,.reveal-r.on { opacity:1; transform:none }
-
-    /* ── Shimmer button ── */
-    .shimmer-btn {
-      background-size:200% auto;
-      background-image:linear-gradient(90deg,#4f46e5 0%,#6366f1 40%,#818cf8 50%,#6366f1 60%,#4f46e5 100%);
-      animation:shimmer 3s linear infinite;
-      transition:transform .15s, box-shadow .15s;
-    }
-    .shimmer-btn:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(79,70,229,.35) }
-    .shimmer-btn:active { transform:scale(.97) }
-    @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
-
-    /* ── Typewriter cursor ── */
-    .tw-cursor::after { content:'|'; animation:blink 1s step-start infinite }
-    @keyframes blink { 50%{opacity:0} }
-
-    /* ── Ping badge ── */
-    .ping-badge { animation:pingBadge 2.5s ease-in-out infinite }
-    @keyframes pingBadge { 0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0)} 50%{box-shadow:0 0 0 8px rgba(16,185,129,0)} }
-
-    /* ── Subject card ── */
-    .subject-card::after { content:''; position:absolute; inset:0; border-radius:inherit; box-shadow:inset 0 0 0 1.5px rgba(99,102,241,.35); opacity:0; transition:opacity .3s; pointer-events:none }
-    .subject-card:hover::after { opacity:1 }
-
-    /* ── FAQ ── */
-    .faq-body { max-height:0; overflow:hidden; transition:max-height .38s cubic-bezier(.16,1,.3,1), padding .2s }
-    .faq-body.open { max-height:300px }
-    .faq-chevron { transition:transform .3s }
-    .faq-chevron.open { transform:rotate(180deg) }
-    .faq-item { transition: border-color .2s, box-shadow .2s }
-    .faq-item.open { border-color:#818cf8; box-shadow:0 0 0 3px rgba(99,102,241,.08) }
-
-    /* ── Modal ── */
-    .modal-overlay { position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:1rem;
-      background:rgba(2,6,23,.7); backdrop-filter:blur(12px); opacity:0; pointer-events:none; transition:opacity .25s }
-    .modal-overlay.open { opacity:1; pointer-events:all }
-    .modal-box { background:#fff; border-radius:1.5rem; width:100%; max-width:460px; max-height:90vh; overflow-y:auto;
-      transform:scale(.94) translateY(16px); transition:transform .3s cubic-bezier(.16,1,.3,1); box-shadow:0 32px 80px rgba(0,0,0,.35) }
-    .modal-overlay.open .modal-box { transform:none }
-
-    /* ── Floating action bar ── */
-    #fab { position:fixed; bottom:1.5rem; right:1.5rem; z-index:100;
-      transition:transform .4s cubic-bezier(.16,1,.3,1), opacity .3s; opacity:0; pointer-events:none; transform:translateY(80px); }
-    #fab.show { transform:translateY(0); opacity:1; pointer-events:all; }
-    @media (min-width: 640px) { #fab { bottom:2rem; right:2rem; } }
-
-    /* ── Social platform btn ── */
-    .plat-btn { display:flex; flex-direction:column; align-items:center; gap:.4rem; padding:.75rem .5rem;
-      border-radius:.875rem; border:1px solid #e2e8f0; transition:all .2s; text-decoration:none; flex:1 }
-    .plat-btn:hover { background:#f8fafc; border-color:#cbd5e1; transform:translateY(-2px) }
-    .plat-btn span.lbl { font-size:10px; color:#64748b; font-weight:600 }
-
-    /* ── Nav scrolled ── */
-    #navbar.scrolled { box-shadow:0 4px 20px rgba(0,0,0,.07) }
-
-    /* ── Animate SVG dash ── */
-    .svg-dash { stroke-dasharray:8 12; animation:dash 30s linear infinite }
-    @keyframes dash { 0%{stroke-dashoffset:1000} 100%{stroke-dashoffset:0} }
-
-    /* ── Hero entrance ── */
-    @keyframes slideUp { 0%{opacity:0;transform:translateY(28px)} 100%{opacity:1;transform:none} }
-    @keyframes fadeIn  { 0%{opacity:0} 100%{opacity:1} }
-    .hero-1 { animation:slideUp .65s .1s ease-out both }
-    .hero-2 { animation:slideUp .65s .25s ease-out both }
-    .hero-3 { animation:slideUp .55s .4s ease-out both }
-    .hero-4 { animation:slideUp .55s .52s ease-out both }
-    .hero-5 { animation:fadeIn .7s .7s ease-out both }
+    /* Big italic accent */
+    .accent-italic { font-family: 'Playfair Display', serif; font-style: italic; }
   </style>
 </head>
 
-<body class="bg-slate-950 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+<body class="bg-ink-950 antialiased">
 
-<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-lg border-b border-slate-200/80">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-20">
-      <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-2">
-        <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md" style="font-family:'Sora',sans-serif">T</div>
-        <span class="font-bold text-xl text-slate-900 tracking-tight" style="font-family:'Sora',sans-serif">Tutor<span class="text-brand-600">Pro</span></span>
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav id="navbar" class="fixed w-full z-50 bg-ink-950/80 backdrop-blur-lg border-b border-white/[0.06]">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="flex justify-between items-center h-16">
+
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 bg-sage-500 rounded-lg flex items-center justify-center">
+          <span class="font-mono text-sm font-bold text-ink-950">T</span>
+        </div>
+        <span class="font-display text-lg font-semibold text-cream-50 tracking-tight">TutorPro</span>
       </button>
 
-      <div class="hidden md:flex items-center gap-5">
-        <button onclick="smoothScroll('about')" class="text-slate-600 hover:text-brand-600 font-medium transition-colors text-sm">Subjects</button>
-        <button onclick="smoothScroll('experience')" class="text-slate-600 hover:text-brand-600 font-medium transition-colors text-sm">About</button>
-        <button onclick="smoothScroll('faq')" class="text-slate-600 hover:text-brand-600 font-medium transition-colors text-sm">FAQ</button>
-        <div class="w-px h-5 bg-slate-200"></div>
-        <button onclick="openModal('shareModal')" class="flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-colors">
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-          Share
-        </button>
-        <button onclick="smoothScroll('book')" class="shimmer-btn text-white font-semibold rounded-full px-5 py-2 text-sm shadow-md">Book Session</button>
+      <div class="hidden md:flex items-center gap-6">
+        <button onclick="smoothScroll('about')" class="text-sm text-white/50 hover:text-white/90 transition-colors font-medium">Subjects</button>
+        <button onclick="smoothScroll('experience')" class="text-sm text-white/50 hover:text-white/90 transition-colors font-medium">About</button>
+        <button onclick="smoothScroll('reviews')" class="text-sm text-white/50 hover:text-white/90 transition-colors font-medium">Reviews</button>
+        <button onclick="smoothScroll('faq')" class="text-sm text-white/50 hover:text-white/90 transition-colors font-medium">FAQ</button>
+        <div class="w-px h-4 bg-white/10"></div>
+        <button onclick="smoothScroll('book')" class="btn-primary px-5 py-2 rounded-full text-sm">Book a Session</button>
       </div>
 
-      <div class="md:hidden flex items-center gap-2">
-        <button onclick="smoothScroll('book')" class="shimmer-btn text-white font-semibold rounded-full px-4 py-2 text-sm shadow-md">Book</button>
+      <div class="md:hidden">
+        <button onclick="smoothScroll('book')" class="btn-primary px-4 py-2 rounded-full text-sm">Book</button>
       </div>
     </div>
   </div>
 </nav>
 
-<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-950">
-  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-600/30 rounded-full blur-3xl animate-blob"></div>
-    <div class="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-emerald-500/20 rounded-full blur-3xl animate-blob" style="animation-delay:2s"></div>
-    <div class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-3xl animate-blob" style="animation-delay:4s"></div>
-    <svg class="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <path d="M100,0L100,800 M300,0L300,800 M500,0L500,800 M700,0L700,800 M900,0L900,800 M1100,0L1100,800 M1300,0L1300,800" stroke="#fff" stroke-width="1" opacity=".05"/>
-      <path d="M0,100L1440,100 M0,300L1440,300 M0,500L1440,500 M0,700L1440,700" stroke="#fff" stroke-width="1" opacity=".05"/>
-      <path id="mf" d="M-100,400 C200,400 300,200 600,200 C900,200 1000,600 1300,600 C1500,600 1600,400 1600,400" stroke="#4f46e5" fill="none" stroke-width="2" class="svg-dash" opacity=".6"/>
-      <path id="bf" d="M600,200 C700,100 800,100 900,200 C1000,300 900,400 800,400 C700,400 600,300 600,200" stroke="#10b981" fill="none" stroke-width="2" class="svg-dash" style="animation-duration:20s" opacity=".6"/>
-      <circle cx="200" cy="400" r="6" fill="#818cf8"/>
-      <circle cx="600" cy="200" r="8" fill="#34d399"/>
-      <circle cx="800" cy="400" r="6" fill="#38bdf8"/>
-      <circle cx="1300" cy="600" r="10" fill="#f472b6"/>
-      <circle r="4" fill="#fff"><animateMotion dur="8s" repeatCount="indefinite"><mpath href="#mf"/></animateMotion></circle>
-      <circle r="4" fill="#34d399"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#bf"/></animateMotion></circle>
-      <g class="animate-float-slow" stroke="#34d399" stroke-width="2" fill="none" opacity=".5" transform="translate(150,150)">
-        <path d="M50,0L20,40 M50,0L80,40 M20,40L0,80 M20,40L40,80"/>
-        <circle cx="50" cy="0" r="5" fill="#020617"/><circle cx="20" cy="40" r="5" fill="#020617"/><circle cx="80" cy="40" r="5" fill="#020617"/><circle cx="0" cy="80" r="5" fill="#020617"/><circle cx="40" cy="80" r="5" fill="#020617"/>
-      </g>
-      <text x="1100" y="280" class="animate-float-fast" font-family="serif" font-size="28" font-style="italic" fill="#c084fc" opacity=".5">f(x) = y</text>
-    </svg>
-    <div class="absolute inset-0 opacity-10" style="background-image:radial-gradient(#fff 1px,transparent 1px);background-size:32px 32px"></div>
-  </div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-    
-    <div class="hero-1 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-medium text-xs sm:text-sm mb-8 backdrop-blur-sm ping-badge shadow-[0_0_15px_rgba(16,185,129,.15)]">
-      <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-      </span>
-      Accepting New Students — Surrey, Delta & Online
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 overflow-hidden bg-ink-950">
+
+  <!-- background grid -->
+  <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 72px 72px;"></div>
+
+  <!-- glow blobs -->
+  <div class="absolute top-[-15%] left-[-8%] w-[600px] h-[600px] rounded-full opacity-20" style="background: radial-gradient(circle, #527a65 0%, transparent 70%); filter: blur(60px);"></div>
+  <div class="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full opacity-15" style="background: radial-gradient(circle, #f5c842 0%, transparent 70%); filter: blur(80px);"></div>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+
+    <div class="h1 inline-flex items-center gap-2 pill bg-sage-500/10 text-sage-400 mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse"></span>
+      Surrey & Delta, BC · Online
     </div>
 
-    <h1 class="hero-2 font-heading text-center text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-4 tracking-tight leading-tight" style="font-family:'Sora',sans-serif">
-      Master<br>
-      <span id="tw" class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-emerald-400 tw-cursor"></span>
+    <h1 class="h2 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-cream-50 leading-[1.05] mb-6 max-w-4xl">
+      Learn smarter,<br>
+      <span class="accent-italic text-sage-400">not harder.</span>
     </h1>
 
-    <p class="hero-2 text-center text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8" style="animation-delay:.3s">
-      Personalized, step-by-step tutoring designed to help you gain confidence and clarity. Prep for tech interviews, build core academic foundations, or master a new language.
+    <p class="h3 text-lg text-white/50 max-w-xl leading-relaxed mb-10">
+      One-on-one tutoring for Data Structures & Algorithms, Math, and Punjabi — built around how <em>you</em> learn, not how everyone else does.
     </p>
 
-    <div class="hero-3 flex flex-wrap justify-center gap-2 mb-10">
-      <span class="text-xs font-semibold px-3 py-1.5 rounded-full border bg-sky-500/20 text-sky-300 border-sky-500/30">C++ & Java</span>
-      <span class="text-xs font-semibold px-3 py-1.5 rounded-full border bg-purple-500/20 text-purple-300 border-purple-500/30">Interview Prep</span>
-      <span class="text-xs font-semibold px-3 py-1.5 rounded-full border bg-emerald-500/20 text-emerald-300 border-emerald-500/30">High School Math</span>
-      <span class="text-xs font-semibold px-3 py-1.5 rounded-full border bg-amber-500/20 text-amber-300 border-amber-500/30">Calculus</span>
-      <span class="text-xs font-semibold px-3 py-1.5 rounded-full border bg-pink-500/20 text-pink-300 border-pink-500/30">Punjabi</span>
-      <span class="text-xs font-semibold px-3 py-1.5 rounded-full border bg-sky-500/20 text-sky-300 border-sky-500/30">Virtual & In-Person</span>
-    </div>
-
-    <div class="hero-4 flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-sm sm:max-w-none mx-auto mb-14 px-4 sm:px-0">
-      <button onclick="smoothScroll('book')" class="w-full sm:w-auto shimmer-btn inline-flex justify-center items-center gap-2 text-white px-8 sm:px-10 py-4 rounded-full font-bold text-lg shadow-xl">
-        Book Your Session
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    <div class="h4 flex flex-col sm:flex-row gap-4 mb-16">
+      <button onclick="smoothScroll('book')" class="btn-primary px-8 py-3.5 rounded-full text-base">
+        Book a Free Intro →
       </button>
-      <button onclick="smoothScroll('about')" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-slate-800/80 hover:bg-slate-700 backdrop-blur-md border border-slate-700 text-white px-8 sm:px-10 py-4 rounded-full font-semibold text-lg transition-all hover:-translate-y-0.5">
-        View Subjects
+      <button onclick="smoothScroll('about')" class="btn-ghost px-8 py-3.5 rounded-full text-base">
+        See What I Teach
       </button>
     </div>
 
-    <div class="hero-5 inline-flex flex-col md:flex-row items-center justify-center gap-5 sm:gap-6 px-6 py-5 sm:py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md mx-auto w-fit">
-      <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 shrink-0">
-        <div class="flex items-center">
-          <img src="https://i.pravatar.cc/150?u=tp1" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-slate-900 object-cover" alt="Student">
-          <img src="https://i.pravatar.cc/150?u=tp2" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-slate-900 object-cover -ml-3" alt="Student">
-          <img src="https://i.pravatar.cc/150?u=tp3" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-slate-900 object-cover -ml-3" alt="Student">
-          <img src="https://i.pravatar.cc/150?u=tp4" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-slate-900 object-cover -ml-3" alt="Student">
-        </div>
-        <div class="text-center sm:text-left flex flex-col justify-center">
-          <div class="flex justify-center sm:justify-start gap-1 mb-1 sm:mb-0.5">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-300 font-medium whitespace-nowrap">Trusted by students in Surrey & Delta</p>
-        </div>
+    <!-- stats row -->
+    <div class="h5 flex flex-wrap gap-8 sm:gap-12">
+      <div>
+        <div class="font-display text-3xl text-cream-50 font-bold">30+</div>
+        <div class="text-xs text-white/40 mt-1 uppercase tracking-wider font-medium">Students tutored</div>
       </div>
-      
-      <div class="hidden md:block w-px h-8 bg-white/10"></div>
-      <div class="block md:hidden w-3/4 h-px bg-white/10"></div>
-      
-      <div class="flex items-center justify-center gap-6 sm:gap-8 text-center shrink-0">
-        <div><p class="font-bold text-white text-base sm:text-lg leading-none" style="font-family:'Sora',sans-serif">100+</p><p class="text-slate-400 text-[10px] sm:text-xs mt-1">Students</p></div>
-        <div class="w-px h-5 bg-white/10"></div>
-        <div><p class="font-bold text-white text-base sm:text-lg leading-none" style="font-family:'Sora',sans-serif">3</p><p class="text-slate-400 text-[10px] sm:text-xs mt-1">Subjects</p></div>
-        <div class="w-px h-5 bg-white/10"></div>
-        <div><p class="font-bold text-white text-base sm:text-lg leading-none" style="font-family:'Sora',sans-serif">2hr</p><p class="text-slate-400 text-[10px] sm:text-xs mt-1">Sessions</p></div>
+      <div class="w-px bg-white/10 self-stretch"></div>
+      <div>
+        <div class="font-display text-3xl text-cream-50 font-bold">2 hr</div>
+        <div class="text-xs text-white/40 mt-1 uppercase tracking-wider font-medium">Per session</div>
       </div>
-    </div>
-  </div> 
-</section>
-
-<section id="about" class="py-24 relative overflow-hidden bg-slate-50">
-  <div class="absolute inset-0 pointer-events-none z-0">
-    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-400/10 rounded-full blur-3xl animate-blob"></div>
-    <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-emerald-400/10 rounded-full blur-3xl animate-blob" style="animation-delay:2s"></div>
-    <div class="absolute inset-0 opacity-[0.02]" style="background-image:radial-gradient(#0f172a 1px,transparent 1px);background-size:32px 32px"></div>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-      <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">Areas of Expertise</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4" style="font-family:'Sora',sans-serif">What I Teach</h2>
-      <p class="text-slate-600 text-lg">I adapt my teaching style to fit your unique pace and goals.</p>
-    </div>
-    
-    <div class="flex overflow-x-auto pb-8 -mx-4 px-4 sm:grid sm:grid-cols-1 md:grid-cols-3 sm:overflow-visible sm:pb-0 sm:mx-0 sm:px-0 gap-6 snap-x snap-mandatory hide-scroll">
-      
-      <div class="subject-card relative bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,.03)] hover:shadow-[0_10px_40px_rgba(0,0,0,.08)] transition-all duration-300 reveal group min-w-[85vw] sm:min-w-0 snap-center">
-        <div class="w-14 h-14 bg-brand-50 group-hover:bg-brand-100 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110">
-          <svg class="w-7 h-7 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-        </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3" style="font-family:'Sora',sans-serif">Data Structures & Algorithms</h3>
-        <p class="text-slate-600 text-sm leading-relaxed mb-5">Comprehensive coaching in C++, Java, and more. Perfect for CS students and professionals prepping for technical interviews.</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-brand-50 text-brand-600 px-3 py-1 rounded-full border border-brand-100 font-medium">C++</span>
-          <span class="text-xs bg-brand-50 text-brand-600 px-3 py-1 rounded-full border border-brand-100 font-medium">Java</span>
-          <span class="text-xs bg-brand-50 text-brand-600 px-3 py-1 rounded-full border border-brand-100 font-medium">Interview Prep</span>
-        </div>
+      <div class="w-px bg-white/10 self-stretch"></div>
+      <div>
+        <div class="font-display text-3xl text-cream-50 font-bold">4.9★</div>
+        <div class="text-xs text-white/40 mt-1 uppercase tracking-wider font-medium">Average rating</div>
       </div>
-
-      <div class="subject-card relative bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,.03)] hover:shadow-[0_10px_40px_rgba(0,0,0,.08)] transition-all duration-300 reveal group min-w-[85vw] sm:min-w-0 snap-center" style="transition-delay:100ms">
-        <div class="w-14 h-14 bg-emerald-50 group-hover:bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110">
-          <svg class="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-        </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3" style="font-family:'Sora',sans-serif">Mathematics</h3>
-        <p class="text-slate-600 text-sm leading-relaxed mb-5">High School and College-level math. Build unshakeable foundations, boost your grades, and truly understand the formulas.</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full border border-emerald-100 font-medium">High School</span>
-          <span class="text-xs bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full border border-emerald-100 font-medium">College</span>
-          <span class="text-xs bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full border border-emerald-100 font-medium">Calculus</span>
-        </div>
-      </div>
-
-      <div class="subject-card relative bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,.03)] hover:shadow-[0_10px_40px_rgba(0,0,0,.08)] transition-all duration-300 reveal group min-w-[85vw] sm:min-w-0 snap-center" style="transition-delay:200ms">
-        <div class="w-14 h-14 bg-purple-50 group-hover:bg-purple-100 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110">
-          <svg class="w-7 h-7 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
-        </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3" style="font-family:'Sora',sans-serif">Punjabi Language</h3>
-        <p class="text-slate-600 text-sm leading-relaxed mb-5">Tailored lessons for non-native learners. Reading, writing, and fluent conversational skills built from scratch.</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="text-xs bg-purple-50 text-purple-600 px-3 py-1 rounded-full border border-purple-100 font-medium">Reading</span>
-          <span class="text-xs bg-purple-50 text-purple-600 px-3 py-1 rounded-full border border-purple-100 font-medium">Writing</span>
-          <span class="text-xs bg-purple-50 text-purple-600 px-3 py-1 rounded-full border border-purple-100 font-medium">Conversation</span>
-        </div>
+      <div class="w-px bg-white/10 self-stretch"></div>
+      <div>
+        <div class="font-display text-3xl text-cream-50 font-bold">3</div>
+        <div class="text-xs text-white/40 mt-1 uppercase tracking-wider font-medium">Subjects</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="experience" class="py-16 sm:py-24 bg-white border-t border-slate-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-      
-      <div class="reveal-l">
-        <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">My Background</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 sm:mb-6" style="font-family:'Sora',sans-serif">Hands-On Experience</h2>
-        <p class="text-base sm:text-lg text-slate-600 mb-4 sm:mb-6 leading-relaxed">I gained extensive hands-on tutoring experience through my College Peer Tutoring Program. Working with a highly diverse group of learners taught me that no two students learn exactly the same way.</p>
-        <p class="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 leading-relaxed">Whether you're debugging complex code, struggling with calculus, or pronouncing a new language, I assess your current level and build a custom path that gets you there.</p>
-        
-        <div class="space-y-3 sm:space-y-4">
-          <div class="flex gap-3 sm:gap-4 items-center p-4 sm:p-5 bg-slate-50/80 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
-            <div><h4 class="font-bold text-slate-900 text-sm sm:text-base">Proven Results</h4><p class="text-xs sm:text-sm text-slate-500 mt-0.5">Tailored lessons to fit every student's pace.</p></div>
-          </div>
-          <div class="flex gap-3 sm:gap-4 items-center p-4 sm:p-5 bg-slate-50/80 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
-            <div><h4 class="font-bold text-slate-900 text-sm sm:text-base">Custom Materials</h4><p class="text-xs sm:text-sm text-slate-500 mt-0.5">Practice sheets, slide decks, and notes for every session.</p></div>
-          </div>
-          <div class="flex gap-3 sm:gap-4 items-center p-4 sm:p-5 bg-slate-50/80 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
-            <div><h4 class="font-bold text-slate-900 text-sm sm:text-base">Diverse Learners</h4><p class="text-xs sm:text-sm text-slate-500 mt-0.5">Experience with all academic levels and backgrounds.</p></div>
-          </div>
-        </div>
-      </div>
-      
-      <div id="expectations" class="bg-white p-6 sm:p-10 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,.05)] reveal-r border border-slate-100 lg:sticky lg:top-28">
-        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6 sm:mb-8 flex items-center gap-3" style="font-family:'Sora',sans-serif">What to Expect</h3>
-        <div class="space-y-4 sm:space-y-6">
-          <div class="flex gap-3 sm:gap-4">
-            <div class="w-8 h-8 sm:w-10 sm:h-10 bg-brand-50 text-brand-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 sm:mt-1"><svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-            <div><h4 class="font-bold text-slate-900 text-base sm:text-lg">Session Duration</h4><p class="text-slate-600 mt-0.5 sm:mt-1 text-xs sm:text-sm">2 focused hours per session, scheduled in advance to respect your time.</p></div>
-          </div>
-          <div class="flex gap-3 sm:gap-4">
-            <div class="w-8 h-8 sm:w-10 sm:h-10 bg-brand-50 text-brand-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 sm:mt-1"><svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
-            <div><h4 class="font-bold text-slate-900 text-base sm:text-lg">Flexible Mode</h4><p class="text-slate-600 mt-0.5 sm:mt-1 text-xs sm:text-sm">Virtual online sessions, or in-person in Surrey & Delta — your choice.</p></div>
-          </div>
-          <div class="flex gap-3 sm:gap-4">
-            <div class="w-8 h-8 sm:w-10 sm:h-10 bg-brand-50 text-brand-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 sm:mt-1"><svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
-            <div><h4 class="font-bold text-slate-900 text-base sm:text-lg">Custom Materials</h4><p class="text-slate-600 mt-0.5 sm:mt-1 text-xs sm:text-sm">Personalized practice sheets, slide decks, and concept-building notes.</p></div>
-          </div>
-          <div class="flex gap-3 sm:gap-4">
-            <div class="w-8 h-8 sm:w-10 sm:h-10 bg-brand-50 text-brand-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 sm:mt-1"><svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div>
-            <div><h4 class="font-bold text-slate-900 text-base sm:text-lg">Review Sessions</h4><p class="text-slate-600 mt-0.5 sm:mt-1 text-xs sm:text-sm">Dedicated sessions to track progress and reinforce difficult topics.</p></div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</section>
 
-<section id="faq" class="py-24 relative overflow-hidden bg-slate-50 border-t border-slate-100">
-  <div class="absolute inset-0 pointer-events-none z-0">
-    <div class="absolute top-[10%] right-[-5%] w-[400px] h-[400px] bg-purple-400/10 rounded-full blur-3xl animate-blob"></div>
-    <div class="absolute bottom-[10%] left-[-5%] w-[500px] h-[500px] bg-brand-400/10 rounded-full blur-3xl animate-blob" style="animation-delay:4s"></div>
-    <div class="absolute inset-0 opacity-[0.02]" style="background-image:radial-gradient(#0f172a 1px,transparent 1px);background-size:32px 32px"></div>
-  </div>
-
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="text-center mb-14 reveal">
-      <p class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">Common Questions</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3" style="font-family:'Sora',sans-serif">Frequently Asked Questions</h2>
-      <p class="text-slate-500">Everything you need to know before booking your first session.</p>
-    </div>
-    <div class="space-y-3 reveal" id="faqList"></div>
-    <p class="text-center text-slate-500 mt-10">Still have a question? <button onclick="smoothScroll('book')" class="text-brand-600 font-semibold hover:underline">Send a message via the booking form →</button></p>
-  </div>
-</section>
-
-<section id="book" class="py-16 sm:py-24 relative overflow-hidden bg-slate-950">
-  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-600/30 rounded-full blur-3xl animate-blob"></div>
-    <div class="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-3xl animate-blob" style="animation-delay:3s"></div>
-    <div class="absolute inset-0 opacity-10" style="background-image:radial-gradient(#fff 1px,transparent 1px);background-size:32px 32px"></div>
-  </div>
-  
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
-    <div class="text-center mb-8 sm:mb-12 reveal">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6" style="font-family:'Sora',sans-serif">Ready to reach your goals?</h2>
-      <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto">Fill out the form below and I'll reach out within 24 hours to schedule your first session.</p>
-    </div>
-    
-    <div class="bg-white rounded-2xl shadow-2xl reveal relative text-left overflow-hidden">
-      <div class="absolute top-0 left-0 bottom-0 w-1 bg-brand-600 rounded-l-3xl"></div>
-      
-      <div class="px-5 sm:px-12 pt-6 sm:pt-10 pb-4 sm:pb-6 border-b border-slate-100">
-        <div class="flex items-center justify-between flex-wrap gap-4">
-          <div>
-            <h3 class="text-xl sm:text-2xl font-bold text-slate-900" style="font-family:'Sora',sans-serif">Booking Request</h3>
-            <p class="text-slate-500 text-xs sm:text-sm mt-1">I'll reach out within 24 hours to confirm your first session.</p>
-          </div>
-        </div>
-      </div>
-      
-      <form id="bookingForm" class="space-y-6 sm:space-y-8 px-5 sm:px-12 py-6 sm:py-8" novalidate>
-        <input type="hidden" name="access_key" value="0de76b7a-1813-4bb6-913f-f0b8d941266c">
-        <input type="checkbox" name="botcheck" class="hidden" style="display:none">
-        
-        <div class="border-b border-slate-100 pb-6 sm:pb-8">
-          <h4 class="text-base sm:text-lg font-bold text-slate-800 mb-4 sm:mb-6 flex items-center gap-2">
-            <span class="bg-brand-50 p-1.5 sm:p-2 rounded-lg text-brand-600"><svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></span>
-            1. Contact Information
-          </h4>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
-            <div><label class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Student Full Name *</label><input type="text" name="student_name" required placeholder="John Doe" class="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none transition-all text-slate-800 bg-slate-50/50 text-sm sm:text-base"></div>
-            <div><label class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Parent/Guardian <span class="text-slate-400 font-normal">(If under 18)</span></label><input type="text" name="parent_name" placeholder="Jane Doe" class="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none transition-all text-slate-800 bg-slate-50/50 text-sm sm:text-base"></div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            <div><label class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Email Address *</label><input type="email" name="email" required placeholder="john@example.com" class="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none transition-all text-slate-800 bg-slate-50/50 text-sm sm:text-base"></div>
-            <div><label class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Phone Number *</label><input type="tel" name="phone" required placeholder="(604) 555-0100" class="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none transition-all text-slate-800 bg-slate-50/50 text-sm sm:text-base"></div>
-          </div>
-        </div>
-
-        <div class="border-b border-slate-100 pb-6 sm:pb-8">
-          <h4 class="text-base sm:text-lg font-bold text-slate-800 mb-4 sm:mb-6 flex items-center gap-2">
-            <span class="bg-emerald-50 p-1.5 sm:p-2 rounded-lg text-emerald-600"><svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span>
-            2. Academic Profile
-          </h4>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
-            <div><label class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Current Grade / Level *</label>
-              <select name="grade_level" required class="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-slate-800 bg-slate-50/50 text-sm sm:text-base">
-                <option value="" disabled selected>Select level...</option>
-                <option>Middle School</option><option>High School</option><option>University/College</option><option>Professional/Adult</option>
-              </select>
-            </div>
-            <div><label class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Subject of Interest *</label>
-              <select name="subject" required class="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-slate-800 bg-slate-50/50 text-sm sm:text-base">
-                <option value="" disabled selected>Select a subject...</option>
-                <option>Data Structures & Algorithms (C++, Java)</option><option>High School Math</option><option>College Math</option><option>Punjabi Language</option>
-              </select>
-            </div>
-          </div>
-          <div><label class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">Current Challenges & Goals *</label><textarea name="goals" rows="3" required placeholder="What specific topics are you struggling with? What is your main goal?" class="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-slate-800 bg-slate-50/50 text-sm sm:text-base"></textarea></div>
-        </div>
-
-        <div>
-          <h4 class="text-base sm:text-lg font-bold text-slate-800 mb-4 sm:mb-6 flex items-center gap-2">
-            <span class="bg-purple-50 p-1.5 sm:p-2 rounded-lg text-purple-600"><svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></span>
-            3. Scheduling & Logistics
-          </h4>
-          <div class="mb-4 sm:mb-6">
-            <label class="block text-xs sm:text-sm font-medium text-slate-700 mb-2 sm:mb-3">Preferred Tutoring Mode *</label>
-            <div class="flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-4">
-              <label class="flex items-center gap-2 cursor-pointer p-2.5 sm:p-3 border border-slate-200 rounded-xl hover:bg-brand-50 hover:border-brand-200 transition-colors bg-slate-50/50 w-full sm:w-auto"><input type="radio" name="mode" value="Virtual" required class="w-4 h-4 text-brand-600 border-slate-300"><span class="font-medium text-slate-700 text-sm sm:text-base">Virtual (Online)</span></label>
-              <label class="flex items-center gap-2 cursor-pointer p-2.5 sm:p-3 border border-slate-200 rounded-xl hover:bg-brand-50 hover:border-brand-200 transition-colors bg-slate-50/50 w-full sm:w-auto"><input type="radio" name="mode" value="In-person Surrey" class="w-4 h-4 text-brand-600 border-slate-300"><span class="font-medium text-slate-700 text-sm sm:text-base">In-person (Surrey)</span></label>
-              <label class="flex items-center gap-2 cursor-pointer p-2.5 sm:p-3 border border-slate-200 rounded-xl hover:bg-brand-50 hover:border-brand-200 transition-colors bg-slate-50/50 w-full sm:w-auto"><input type="radio" name="mode" value="In-person Delta" class="w-4 h-4 text-brand-600 border-slate-300"><span class="font-medium text-slate-700 text-sm sm:text-base">In-person (Delta)</span></label>
-            </div>
-          </div>
-          <div><label class="block text-xs sm:text-sm font-medium text-slate-700 mb-1.5 sm:mb-2">General Availability *</label><input type="text" name="availability" required placeholder="e.g., Weekdays after 5PM, Weekends morning" class="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none text-slate-800 bg-slate-50/50 text-sm sm:text-base"></div>
-        </div>
-
-        <div id="formResult" class="hidden"></div>
-
-        <button type="submit" id="submitBtn" class="w-full shimmer-btn text-white font-bold py-3.5 sm:py-4 rounded-xl shadow-lg text-base sm:text-lg flex justify-center items-center gap-2">
-          Submit Booking Request
-          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </button>
-        <p class="text-center text-slate-500 text-xs sm:text-sm mt-3 sm:mt-4">All information is kept strictly confidential. I typically respond within 24 hours.</p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-sm" style="font-family:'Sora',sans-serif">T</div>
-      <span class="font-bold text-lg text-white" style="font-family:'Sora',sans-serif">Tutor<span class="text-brand-500">Pro</span></span>
-    </div>
-    <p class="text-sm">© <span id="yr"></span> TutorPro Expert Tutoring. Surrey & Delta, BC.</p>
-    <div class="flex gap-4 text-sm">
-      <span class="hover:text-white transition-colors cursor-pointer">Surrey</span>
-      <span>•</span><span class="hover:text-white transition-colors cursor-pointer">Delta</span>
-      <span>•</span><span class="hover:text-white transition-colors cursor-pointer">Virtual</span>
-    </div>
-  </div>
-</footer>
-
-<div id="fab">
-  <div class="flex flex-col items-end gap-3">
-    <button onclick="openModal('shareModal')" class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700 text-white shadow-[0_8px_20px_rgba(0,0,0,.2)] border border-slate-700 transition-colors" aria-label="Share">
-      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-    </button>
-    
-    <button onclick="smoothScroll('book')" class="hidden sm:flex items-center gap-2 px-5 py-3.5 rounded-full bg-white text-slate-900 font-bold text-sm shadow-[0_8px_25px_rgba(0,0,0,.15)] hover:bg-slate-50 border border-slate-100 transition-all hover:-translate-y-1">
-      Book Now
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-    </button>
+<!-- ── MARQUEE ────────────────────────────────────────────────── -->
+<div class="border-t border-b border-white/[0.06] bg-ink-900 py-4 overflow-hidden">
+  <div class="marquee-track marquee-anim whitespace-nowrap select-none" aria-hidden="true">
+    <span class="inline-flex items-center gap-6 px-6 text-sm text-white/30 font-mono" id="mq1"></span>
+    <span class="inline-flex items-center gap-6 px-6 text-sm text-white/30 font-mono" id="mq2"></span>
   </div>
 </div>
 
-<div id="shareModal" class="modal-overlay" onclick="handleOverlayClick(event,'shareModal')">
-  <div class="modal-box">
-    <div class="px-6 pt-6 pb-5 flex items-start justify-between">
+
+<!-- ── SUBJECTS ───────────────────────────────────────────────── -->
+<section id="about" class="py-24 lg:py-32 bg-cream-50">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14 reveal">
       <div>
-        <h3 class="font-bold text-slate-900 text-xl mb-0.5" style="font-family:'Sora',sans-serif">Share TutorPro</h3>
-        <p class="text-sm text-slate-400">Know someone who could use a great tutor?</p>
+        <p class="pill bg-ink-800 text-white/40 mb-4">Areas of Expertise</p>
+        <h2 class="font-display text-4xl sm:text-5xl text-ink-950 leading-tight">What I Teach</h2>
       </div>
-      <button onclick="closeModal('shareModal')" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 transition-colors text-sm font-bold flex-shrink-0 ml-4">✕</button>
+      <p class="text-ink-700/60 max-w-xs text-sm leading-relaxed">Each subject is taught at your pace, with materials prepared specifically for you.</p>
     </div>
 
-    <div class="px-6 pb-6 space-y-5">
-      <div class="grid grid-cols-4 gap-2" id="sharePlatforms"></div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-      <div class="flex items-center gap-3">
-        <div class="flex-1 h-px bg-slate-100"></div>
-        <span class="text-xs text-slate-400 font-medium">or copy link</span>
-        <div class="flex-1 h-px bg-slate-100"></div>
+      <!-- DSA -->
+      <div class="subject-card bg-ink-950 rounded-2xl p-8 reveal group cursor-default">
+        <div class="w-10 h-10 bg-sage-500/15 rounded-xl flex items-center justify-center mb-8">
+          <svg class="w-5 h-5 text-sage-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        </div>
+        <h3 class="font-display text-xl text-cream-50 mb-3">Data Structures<br>& Algorithms</h3>
+        <p class="text-sm text-white/40 leading-relaxed mb-6">C++ & Java. Arrays to graphs, recursion to DP. Structured for CS students, FAANG-prep, and anyone building real coding fundamentals.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/40 font-mono">C++</span>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/40 font-mono">Java</span>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/40 font-mono">LeetCode</span>
+        </div>
       </div>
 
-      <div class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-200 rounded-2xl">
-        <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-        <span class="text-xs text-slate-500 truncate flex-1 font-mono select-all" id="shareUrl"></span>
-        <button onclick="copyShareLink()" id="copyShareBtn"
-          class="flex-shrink-0 px-3 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs transition-all min-w-[64px] text-center">
-          Copy
-        </button>
+      <!-- Math -->
+      <div class="subject-card bg-ink-950 rounded-2xl p-8 reveal group cursor-default" style="transition-delay:.08s">
+        <div class="w-10 h-10 bg-amber-400/10 rounded-xl flex items-center justify-center mb-8">
+          <svg class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-display text-xl text-cream-50 mb-3">High School &<br>College Math</h3>
+        <p class="text-sm text-white/40 leading-relaxed mb-6">Pre-calc, calculus, linear algebra, discrete math. Whether it's a provincial exam or a university midterm, we build real understanding — not just formula memorization.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/40 font-mono">Calculus</span>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/40 font-mono">Pre-Calc</span>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/40 font-mono">Linear Algebra</span>
+        </div>
+      </div>
+
+      <!-- Punjabi -->
+      <div class="subject-card bg-ink-950 rounded-2xl p-8 reveal group cursor-default" style="transition-delay:.16s">
+        <div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center mb-8">
+          <svg class="w-5 h-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+        </div>
+        <h3 class="font-display text-xl text-cream-50 mb-3">Punjabi<br>Language</h3>
+        <p class="text-sm text-white/40 leading-relaxed mb-6">Reading, writing, conversation — from Gurmukhi script basics to fluent discussion. Great for heritage learners reconnecting with the language or complete beginners.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/40 font-mono">Gurmukhi</span>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/40 font-mono">Reading</span>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 text-white/40 font-mono">Conversation</span>
+        </div>
       </div>
     </div>
   </div>
+</section>
+
+
+<!-- ── EXPERIENCE ─────────────────────────────────────────────── -->
+<section id="experience" class="py-24 lg:py-32 bg-ink-950 border-t border-white/[0.06]">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+      <div class="reveal-l">
+        <p class="pill bg-sage-500/10 text-sage-400 mb-6">My Background</p>
+        <h2 class="font-display text-4xl sm:text-5xl text-cream-50 leading-tight mb-6">
+          Hands-On<br><span class="accent-italic text-sage-400">Experience</span>
+        </h2>
+        <p class="text-white/50 text-base leading-relaxed mb-4">
+          I built my teaching foundation through my College Peer Tutoring Program — working one-on-one with a highly diverse group of learners across different subjects, backgrounds, and skill levels.
+        </p>
+        <p class="text-white/50 text-base leading-relaxed mb-10">
+          That experience taught me something I carry into every session: no two students learn the same way. I start by understanding where you are, then build a path that actually fits you.
+        </p>
+
+        <div class="space-y-3">
+          <div class="flex gap-4 items-start p-5 bg-ink-800 rounded-xl border border-white/[0.06]">
+            <div class="w-9 h-9 bg-sage-500/15 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-sage-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+              <h4 class="text-cream-50 font-semibold text-sm mb-1">Tailored to Your Pace</h4>
+              <p class="text-white/40 text-xs leading-relaxed">Sessions adapt to where you are — not where I assume you should be.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start p-5 bg-ink-800 rounded-xl border border-white/[0.06]">
+            <div class="w-9 h-9 bg-amber-400/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div>
+              <h4 class="text-cream-50 font-semibold text-sm mb-1">Custom Materials Every Session</h4>
+              <p class="text-white/40 text-xs leading-relaxed">Practice sheets, annotated notes, and slide decks — prepared for you, not recycled from last week.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start p-5 bg-ink-800 rounded-xl border border-white/[0.06]">
+            <div class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <h4 class="text-cream-50 font-semibold text-sm mb-1">All Levels Welcome</h4>
+              <p class="text-white/40 text-xs leading-relaxed">From "I've never touched a linked list" to "I need to crack FAANG" — I've worked with both ends of the spectrum.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- What to expect panel -->
+      <div class="bg-ink-800 rounded-2xl p-8 border border-white/[0.06] lg:sticky lg:top-24 reveal-r">
+        <h3 class="font-display text-2xl text-cream-50 mb-8">What to Expect</h3>
+        <div class="space-y-7">
+          <div class="flex gap-4">
+            <div class="font-mono text-xs text-white/20 pt-0.5 w-5 flex-shrink-0">01</div>
+            <div>
+              <h4 class="text-cream-50 font-semibold text-sm mb-1.5">2-Hour Focused Sessions</h4>
+              <p class="text-white/40 text-xs leading-relaxed">Long enough to go deep, short enough to stay sharp. Scheduled in advance so we both come prepared.</p>
+            </div>
+          </div>
+          <div class="rule"></div>
+          <div class="flex gap-4">
+            <div class="font-mono text-xs text-white/20 pt-0.5 w-5 flex-shrink-0">02</div>
+            <div>
+              <h4 class="text-cream-50 font-semibold text-sm mb-1.5">Virtual or In-Person</h4>
+              <p class="text-white/40 text-xs leading-relaxed">Online via video call, or meet in-person in Surrey or Delta — your preference, your comfort.</p>
+            </div>
+          </div>
+          <div class="rule"></div>
+          <div class="flex gap-4">
+            <div class="font-mono text-xs text-white/20 pt-0.5 w-5 flex-shrink-0">03</div>
+            <div>
+              <h4 class="text-cream-50 font-semibold text-sm mb-1.5">Prepared Materials</h4>
+              <p class="text-white/40 text-xs leading-relaxed">Custom practice problems, concept breakdowns, and notes — ready before you even arrive.</p>
+            </div>
+          </div>
+          <div class="rule"></div>
+          <div class="flex gap-4">
+            <div class="font-mono text-xs text-white/20 pt-0.5 w-5 flex-shrink-0">04</div>
+            <div>
+              <h4 class="text-cream-50 font-semibold text-sm mb-1.5">Progress Check-Ins</h4>
+              <p class="text-white/40 text-xs leading-relaxed">We revisit hard topics, track what's clicked, and adjust the plan as you grow.</p>
+            </div>
+          </div>
+        </div>
+        <button onclick="smoothScroll('book')" class="btn-primary w-full py-3.5 rounded-xl text-sm mt-8">Book Your First Session</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── REVIEWS ─────────────────────────────────────────────────── -->
+<section id="reviews" class="py-24 lg:py-32 bg-cream-50 border-t border-ink-200/40">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14 reveal">
+      <div>
+        <p class="pill bg-ink-800 text-white/40 mb-4">Student Reviews</p>
+        <h2 class="font-display text-4xl sm:text-5xl text-ink-950 leading-tight">
+          What students<br><span class="accent-italic text-sage-600">actually say</span>
+        </h2>
+      </div>
+      <div class="flex items-center gap-3 text-ink-700">
+        <div class="flex gap-0.5">
+          <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <span class="text-sm font-semibold text-ink-700">4.9 / 5</span>
+      </div>
+    </div>
+
+    <!-- Featured review -->
+    <div class="bg-ink-950 rounded-2xl p-8 sm:p-10 mb-4 reveal border border-ink-800 relative overflow-hidden">
+      <div class="absolute top-6 right-8 font-display text-[120px] text-white/[0.03] leading-none select-none">"</div>
+      <p class="font-display text-xl sm:text-2xl text-cream-100 leading-relaxed mb-8 max-w-3xl italic relative z-10">
+        "I was completely lost in my CMPT 225 course. After three sessions on linked lists and trees, I went from failing to getting a B+ on my midterm. He doesn't just show you the answer — he makes you understand why."
+      </p>
+      <div class="flex items-center gap-4 relative z-10">
+        <div class="w-10 h-10 rounded-full bg-sage-500/20 flex items-center justify-center text-sage-400 font-bold font-mono text-sm">A</div>
+        <div>
+          <div class="text-cream-50 font-semibold text-sm">Arjun M.</div>
+          <div class="text-white/35 text-xs mt-0.5">SFU Computer Science · Surrey, BC</div>
+        </div>
+        <div class="ml-auto flex gap-0.5">
+          <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4-card grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+      <div class="tcard bg-white rounded-2xl p-7 reveal">
+        <p class="text-ink-800 text-sm leading-relaxed mb-6">
+          "My daughter was struggling with her Grade 11 Pre-Calc all semester. After 4 sessions she's actually excited about math again. He has a way of explaining things that just clicks — very patient, very clear."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-ink-100 flex items-center justify-center text-ink-600 font-bold font-mono text-xs">P</div>
+          <div>
+            <div class="text-ink-900 font-semibold text-sm">Parent — Priya K.</div>
+            <div class="text-ink-400 text-xs mt-0.5">Delta, BC · Math</div>
+          </div>
+          <div class="ml-auto flex gap-0.5">
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard bg-white rounded-2xl p-7 reveal" style="transition-delay:.08s">
+        <p class="text-ink-800 text-sm leading-relaxed mb-6">
+          "I grew up speaking Punjabi but never learned to read or write Gurmukhi properly. He started me from scratch without making me feel behind. I can now read Gurbani on my own. That means a lot to me."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-ink-100 flex items-center justify-center text-ink-600 font-bold font-mono text-xs">S</div>
+          <div>
+            <div class="text-ink-900 font-semibold text-sm">Simran T.</div>
+            <div class="text-ink-400 text-xs mt-0.5">Surrey, BC · Punjabi</div>
+          </div>
+          <div class="ml-auto flex gap-0.5">
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard bg-white rounded-2xl p-7 reveal" style="transition-delay:.04s">
+        <p class="text-ink-800 text-sm leading-relaxed mb-6">
+          "Came to him after bombing two LeetCode interviews. We spent three sessions on graphs and DP patterns specifically. Got an offer from a mid-size tech company two months later. Worth every dollar."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-ink-100 flex items-center justify-center text-ink-600 font-bold font-mono text-xs">R</div>
+          <div>
+            <div class="text-ink-900 font-semibold text-sm">Rajan S.</div>
+            <div class="text-ink-400 text-xs mt-0.5">Surrey, BC · DSA / Interview Prep</div>
+          </div>
+          <div class="ml-auto flex gap-0.5">
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard bg-white rounded-2xl p-7 reveal" style="transition-delay:.12s">
+        <p class="text-ink-800 text-sm leading-relaxed mb-6">
+          "Online sessions worked really well — he shares his screen, we code together, and he walks through every mistake instead of just fixing it. My CALC 152 grade jumped from a C to a B+. Genuinely grateful."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-ink-100 flex items-center justify-center text-ink-600 font-bold font-mono text-xs">N</div>
+          <div>
+            <div class="text-ink-900 font-semibold text-sm">Navneet G.</div>
+            <div class="text-ink-400 text-xs mt-0.5">Online · Calculus</div>
+          </div>
+          <div class="ml-auto flex gap-0.5">
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FAQ ─────────────────────────────────────────────────────── -->
+<section id="faq" class="py-24 lg:py-32 bg-ink-950 border-t border-white/[0.06]">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-14 reveal">
+      <p class="pill bg-white/5 text-white/30 mb-6 mx-auto w-fit">Common Questions</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-cream-50 mb-4">FAQ</h2>
+      <p class="text-white/40 text-sm">Everything you need before your first session.</p>
+    </div>
+    <div class="space-y-3 reveal" id="faqList"></div>
+    <p class="text-center text-white/30 text-sm mt-10">Still have a question?
+      <button onclick="smoothScroll('book')" class="text-sage-400 hover:text-sage-300 transition-colors ml-1">Send a message →</button>
+    </p>
+  </div>
+</section>
+
+
+<!-- ── BOOKING ────────────────────────────────────────────────── -->
+<section id="book" class="py-24 lg:py-32 bg-cream-50 border-t border-ink-200/40">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+      <div class="reveal-l">
+        <p class="pill bg-ink-800 text-white/40 mb-6">Ready to start?</p>
+        <h2 class="font-display text-4xl sm:text-5xl text-ink-950 leading-tight mb-6">
+          Book a<br><span class="accent-italic text-sage-600">Session</span>
+        </h2>
+        <p class="text-ink-600 text-base leading-relaxed mb-8">
+          Fill out the form and I'll follow up within 24 hours to confirm timing and details. The first session starts with a quick assessment — no pressure, just figuring out where you are and where you want to go.
+        </p>
+        <div class="space-y-4">
+          <div class="flex gap-3 items-center">
+            <div class="w-8 h-8 bg-ink-900 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-sage-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <span class="text-ink-600 text-sm">Response within 24 hours</span>
+          </div>
+          <div class="flex gap-3 items-center">
+            <div class="w-8 h-8 bg-ink-900 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-sage-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <span class="text-ink-600 text-sm">Surrey, Delta, or fully online</span>
+          </div>
+          <div class="flex gap-3 items-center">
+            <div class="w-8 h-8 bg-ink-900 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <span class="text-ink-600 text-sm">10% off for referrals</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking form -->
+      <div class="bg-ink-950 rounded-2xl p-7 sm:p-10 border border-white/[0.06] reveal-r">
+        <form id="bookingForm">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE">
+
+          <div class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Student Name *</label>
+                <input type="text" name="student_name" required placeholder="Arjun Sharma" class="form-input">
+              </div>
+              <div>
+                <label class="form-label">Parent / Guardian</label>
+                <input type="text" name="parent_name" placeholder="(if under 18)" class="form-input">
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Email *</label>
+              <input type="email" name="email" required placeholder="you@email.com" class="form-input">
+            </div>
+            <div>
+              <label class="form-label">Phone</label>
+              <input type="tel" name="phone" placeholder="(604) 555-0100" class="form-input">
+            </div>
+            <div>
+              <label class="form-label">Subject *</label>
+              <select name="subject" required class="form-input">
+                <option value="" disabled selected>Select a subject…</option>
+                <option>Data Structures & Algorithms (C++)</option>
+                <option>Data Structures & Algorithms (Java)</option>
+                <option>High School Math</option>
+                <option>College / University Math</option>
+                <option>Punjabi Language</option>
+                <option>Multiple subjects</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Current Level / Grade</label>
+              <input type="text" name="grade" placeholder="e.g. SFU Year 2, Grade 11, Beginner" class="form-input">
+            </div>
+            <div>
+              <label class="form-label">Mode *</label>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <label class="flex items-center gap-2 cursor-pointer p-3 border border-white/10 rounded-xl hover:border-sage-500/30 transition-colors bg-white/[0.02] flex-1">
+                  <input type="radio" name="mode" value="Virtual" required class="accent-sage-500">
+                  <span class="text-cream-100 text-sm">Virtual (Online)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-3 border border-white/10 rounded-xl hover:border-sage-500/30 transition-colors bg-white/[0.02] flex-1">
+                  <input type="radio" name="mode" value="In-person Surrey" class="accent-sage-500">
+                  <span class="text-cream-100 text-sm">In-person (Surrey)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer p-3 border border-white/10 rounded-xl hover:border-sage-500/30 transition-colors bg-white/[0.02] flex-1">
+                  <input type="radio" name="mode" value="In-person Delta" class="accent-sage-500">
+                  <span class="text-cream-100 text-sm">In-person (Delta)</span>
+                </label>
+              </div>
+            </div>
+            <div>
+              <label class="form-label">General Availability *</label>
+              <input type="text" name="availability" required placeholder="e.g. Weekdays after 5PM, Weekends mornings" class="form-input">
+            </div>
+            <div>
+              <label class="form-label">What do you want to improve?</label>
+              <textarea name="message" rows="3" placeholder="Tell me what you're struggling with or what you want to achieve…" class="form-input resize-none"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn-primary w-full py-4 rounded-xl text-sm font-semibold mt-6">
+            Send Booking Request →
+          </button>
+          <div id="formResult" class="hidden"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="bg-ink-950 border-t border-white/[0.06] py-10 px-5 sm:px-8">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2.5">
+      <div class="w-7 h-7 bg-sage-500 rounded-md flex items-center justify-center">
+        <span class="font-mono text-xs font-bold text-ink-950">T</span>
+      </div>
+      <span class="font-display text-cream-100 text-sm">TutorPro</span>
+    </div>
+    <p class="text-white/25 text-xs text-center">Surrey & Delta, BC · Online · © 2025 TutorPro. All rights reserved.</p>
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="text-white/25 hover:text-white/60 text-xs transition-colors">↑ Back to top</button>
+  </div>
+</footer>
+
+<!-- FAB -->
+<div id="fab">
+  <button onclick="smoothScroll('book')" class="btn-primary px-5 py-3 rounded-full text-sm shadow-2xl flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+    Book Session
+  </button>
 </div>
 
 
 <script>
-// ── Helpers ──────────────────────────────────────────────────────
-const SITE_URL = 'https://tutorprobc.com'
-
-function smoothScroll(id) {
-  const el = document.getElementById(id)
-  if (!el) return
-  window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' })
-}
-
-function openModal(id) {
-  document.getElementById(id).classList.add('open')
-  document.body.style.overflow = 'hidden'
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open')
-  document.body.style.overflow = ''
-}
-function handleOverlayClick(e, id) {
-  if (e.target === document.getElementById(id)) closeModal(id)
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal('shareModal') })
-
-// ── Year ──────────────────────────────────────────────────────────
-document.getElementById('yr').textContent = new Date().getFullYear()
-
-// ── Typewriter ───────────────────────────────────────────────────
-const WORDS = ['Data Structures', 'Mathematics', 'Punjabi Language']
-let wi = 0, deleting = false, txt = ''
-const twEl = document.getElementById('tw')
-function tick() {
-  const word = WORDS[wi % WORDS.length]
-  txt = deleting ? word.slice(0, txt.length - 1) : word.slice(0, txt.length + 1)
-  twEl.textContent = txt
-  let delay = deleting ? 50 : 100
-  if (!deleting && txt === word) { delay = 2000; deleting = true }
-  else if (deleting && txt === '') { deleting = false; wi++; delay = 500 }
-  setTimeout(tick, delay)
-}
-tick()
-
-// ── Scroll reveal ─────────────────────────────────────────────────
-const revealObs = new IntersectionObserver((entries, obs) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target) } })
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' })
-document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => revealObs.observe(el))
-
-// ── Nav shadow & FAB auto-hide toggle ─────────────────────────────
+// ── Nav scroll ─────────────────────────────────────────────────
+const navbar = document.getElementById('navbar')
+const fab = document.getElementById('fab')
 window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
-  
-  // Logic to hide the FAB completely when the booking form is on the screen (for tablets/desktops)
-  const bookEl = document.getElementById('book');
-  const bookTop = bookEl.getBoundingClientRect().top;
-  const isBookVisible = bookTop < (window.innerHeight - 150); 
-  
-  // Only show the FAB if user has scrolled down >300px AND the form is NOT visible yet
-  document.getElementById('fab').classList.toggle('show', window.scrollY > 300 && !isBookVisible);
-}, { passive: true });
+  const y = window.scrollY
+  if (y > 40) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled')
+  if (y > 500) fab.classList.add('show'); else fab.classList.remove('show')
+}, { passive: true })
 
-// ── FAQ ───────────────────────────────────────────────────────────
+// ── Smooth scroll ──────────────────────────────────────────────
+function smoothScroll(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+// ── Reveal on scroll ───────────────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal, .reveal-l, .reveal-r')
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target) } })
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+revealEls.forEach(el => io.observe(el))
+
+// ── Marquee setup ──────────────────────────────────────────────
+const items = ['Data Structures & Algorithms', '·', 'C++ & Java', '·', 'High School Math', '·', 'University Calculus', '·', 'Linear Algebra', '·', 'Punjabi Language', '·', 'Gurmukhi Script', '·', 'Coding Interviews', '·', 'LeetCode Prep', '·', 'Surrey & Delta, BC', '·', 'Online Sessions', '·']
+;['mq1', 'mq2'].forEach(id => {
+  document.getElementById(id).textContent = items.join('  ')
+})
+
+// ── FAQ ────────────────────────────────────────────────────────
 const FAQS = [
   { q: 'What subjects do you tutor?', a: 'Data Structures & Algorithms in C++ and Java (great for coding interview prep), High School and College-level Mathematics, and Punjabi Language for non-native learners.' },
-  { q: 'Do you offer online tutoring?', a: 'Yes! Sessions are available fully online via video call, or in-person in Surrey and Delta, BC — whichever works best for you.' },
-  { q: 'How long are the sessions?', a: "Each session is 2 focused hours, scheduled in advance so we both come prepared and make the most of our time together." },
-  { q: 'What do I need to bring?', a: "Just yourself! I prepare personalized practice sheets, slide decks, and concept notes for every session. Bring specific course materials if you want to work through them." },
-  { q: 'How does the referral discount work?', a: "Ask me for a referral code — I'll send one to students who refer a friend. When their friend books a session, you both get 10% off. Just mention it when you reach out." },
-  { q: 'Is this suitable for complete beginners?', a: "Absolutely. I start with a quick assessment to understand your level and learning style, then build a custom path from wherever you are right now." },
+  { q: 'Do you offer online tutoring?', a: 'Yes — sessions are available fully online via video call, or in-person in Surrey and Delta, BC. Whichever works best for you.' },
+  { q: 'How long are the sessions?', a: 'Each session is 2 focused hours, scheduled in advance so we both come prepared and make the most of our time.' },
+  { q: 'What do I need to bring?', a: "Just yourself. I prepare personalized practice sheets, slide decks, and concept notes for every session. Bring your course materials if you want to work through specific problems." },
+  { q: 'How does the referral discount work?', a: "Refer a friend and ask me for a referral code. When their friend books a session, you both get 10% off. Just mention it when you reach out." },
+  { q: 'Is this suitable for complete beginners?', a: "Absolutely. I start with a short assessment to understand your level and learning style, then build a custom path from wherever you are right now." },
 ]
 const faqList = document.getElementById('faqList')
 FAQS.forEach((f, i) => {
   const div = document.createElement('div')
-  div.className = 'faq-item border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm'
+  div.className = 'faq-item rounded-xl overflow-hidden bg-ink-800'
   div.innerHTML = `
-    <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-slate-800 hover:text-brand-600 transition-colors gap-4 bg-white" onclick="toggleFaq(this)">
+    <button class="w-full flex justify-between items-center p-5 text-left font-semibold text-cream-50 hover:text-sage-400 transition-colors gap-4 text-sm" onclick="toggleFaq(this)">
       <span>${f.q}</span>
-      <svg class="faq-chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      <svg class="faq-chevron w-4 h-4 text-white/25 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div class="faq-body bg-white"><p class="px-5 pb-5 text-slate-600 text-sm leading-relaxed">${f.a}</p></div>`
+    <div class="faq-body bg-ink-800"><p class="px-5 pb-5 text-white/40 text-sm leading-relaxed">${f.a}</p></div>`
   faqList.appendChild(div)
   if (i === 0) {
-    const body = div.querySelector('.faq-body')
-    const chev = div.querySelector('.faq-chevron')
-    body.classList.add('open'); chev.classList.add('open'); div.classList.add('open')
+    div.querySelector('.faq-body').classList.add('open')
+    div.querySelector('.faq-chevron').classList.add('open')
+    div.classList.add('open')
   }
 })
 function toggleFaq(btn) {
@@ -644,69 +802,35 @@ function toggleFaq(btn) {
   if (!isOpen) { body.classList.add('open'); chev.classList.add('open'); item.classList.add('open') }
 }
 
-// ── Social platforms ──────────────────────────────────────────────
-const SHARE_TEXT = 'Looking for a great tutor? Check out TutorPro for expert help with Data Structures & Algorithms, Math, and Punjabi in BC & online! 🚀'
-
-const PLATFORMS = [
-  { name:'WhatsApp',  color:'#25D366', shareUrl: `https://wa.me/?text=${encodeURIComponent(SHARE_TEXT+' '+SITE_URL)}`,
-    icon:`<svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>` },
-  { name:'Facebook',  color:'#1877F2', shareUrl: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SITE_URL)}`,
-    icon:`<svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>` },
-  { name:'Twitter',   color:'#000000', shareUrl: `https://twitter.com/intent/tweet?text=${encodeURIComponent(SHARE_TEXT)}&url=${encodeURIComponent(SITE_URL)}`,
-    icon:`<svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.738l7.737-8.835L1.254 2.25H8.08l4.259 5.632L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>` },
-  { name:'LinkedIn',  color:'#0A66C2', shareUrl: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(SITE_URL)}`,
-    icon:`<svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>` },
-]
-
-// Share modal platforms
-const spEl = document.getElementById('sharePlatforms')
-PLATFORMS.forEach(p => {
-  const a = document.createElement('a')
-  a.href = p.shareUrl; a.target = '_blank'; a.rel = 'noopener noreferrer'
-  a.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px;border-radius:14px;border:1.5px solid #e2e8f0;transition:all .2s;text-decoration:none;'
-  a.onmouseenter = () => { a.style.background='#f8fafc'; a.style.borderColor='#cbd5e1'; a.style.transform='translateY(-2px)' }
-  a.onmouseleave = () => { a.style.background=''; a.style.borderColor='#e2e8f0'; a.style.transform='' }
-  a.innerHTML = '<span style="color:'+p.color+';display:flex">'+p.icon+'</span><span style="font-size:10px;color:#64748b;font-weight:600;font-family:DM Sans,sans-serif">'+p.name+'</span>'
-  spEl.appendChild(a)
-})
-
-// Copy link & message
-document.getElementById('shareUrl').textContent = SITE_URL
-function copyShareLink() {
-  const fullMessage = `${SHARE_TEXT} ${SITE_URL}`
-  navigator.clipboard.writeText(fullMessage)
-  
-  const btn = document.getElementById('copyShareBtn')
-  const orig = btn.textContent
-  btn.textContent = 'Copied!'; btn.style.backgroundColor='#10b981'
-  setTimeout(() => { btn.textContent = orig; btn.style.backgroundColor='' }, 2000)
-}
-
-// ── Booking form ──────────────────────────────────────────────────
+// ── Booking form ───────────────────────────────────────────────
 document.getElementById('bookingForm').addEventListener('submit', async function(e) {
   e.preventDefault()
   const btn = document.getElementById('submitBtn')
   const result = document.getElementById('formResult')
   const orig = btn.innerHTML
-  btn.innerHTML = 'Sending... <svg class="animate-spin ml-2 h-5 w-5 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>'
-  btn.disabled = true
+  btn.innerHTML = 'Sending…'; btn.disabled = true
   try {
-    const r = await fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json',Accept:'application/json'}, body: JSON.stringify(Object.fromEntries(new FormData(this))) })
+    const r = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(this)))
+    })
     const data = await r.json()
     if (r.ok) {
-      result.innerHTML = "✅ Success! Your request has been sent. I'll reach out within 24 hours."
-      result.className = 'text-center font-medium p-4 rounded-xl bg-green-100 text-green-700 border border-green-200 mt-4'
+      result.innerHTML = "✓ Sent! I'll follow up within 24 hours."
+      result.className = 'text-center font-medium p-4 rounded-xl bg-sage-500/10 text-sage-400 border border-sage-500/20 mt-4 text-sm'
       this.reset()
     } else {
-      result.innerHTML = '❌ Error: ' + data.message
-      result.className = 'text-center font-medium p-4 rounded-xl bg-red-100 text-red-700 border border-red-200 mt-4'
+      result.innerHTML = '✗ ' + data.message
+      result.className = 'text-center font-medium p-4 rounded-xl bg-red-900/20 text-red-400 border border-red-900/30 mt-4 text-sm'
     }
   } catch {
-    result.innerHTML = '❌ Something went wrong. Please try again.'
-    result.className = 'text-center font-medium p-4 rounded-xl bg-red-100 text-red-700 border border-red-200 mt-4'
+    result.innerHTML = '✗ Something went wrong. Please try again.'
+    result.className = 'text-center font-medium p-4 rounded-xl bg-red-900/20 text-red-400 border border-red-900/30 mt-4 text-sm'
   } finally {
     btn.innerHTML = orig; btn.disabled = false
-    setTimeout(() => { result.className = 'hidden' }, 7000)
+    result.classList.remove('hidden')
+    setTimeout(() => { result.classList.add('hidden') }, 7000)
   }
 })
 </script>
