@@ -591,13 +591,6 @@ function toggleFaq(btn){
 // Booking form submission
 document.getElementById('bookingForm').addEventListener('submit',async function(e){
   e.preventDefault()
-  
-  // Basic hCaptcha validation before sending
-  const hCaptchaResponse = document.querySelector('[name="h-captcha-response"]');
-  if (hCaptchaResponse && !hCaptchaResponse.value) {
-      alert("Please complete the spam check (hCaptcha) before submitting.");
-      return;
-  }
 
   const btn=document.getElementById('submitBtn'),result=document.getElementById('formResult')
   const orig=btn.innerHTML
@@ -615,7 +608,6 @@ document.getElementById('bookingForm').addEventListener('submit',async function(
       result.innerHTML="✓ Sent! I'll follow up within 24 hours."
       result.style.cssText='display:block;background:rgba(122,171,142,.1);color:#7aab8e;border:1px solid rgba(122,171,142,.2);margin-top:14px;font-size:13px;text-align:center;padding:14px;border-radius:12px'
       this.reset()
-      if (typeof hcaptcha !== 'undefined') hcaptcha.reset(); // Reset captcha after success
     }else{
       result.innerHTML='✗ '+data.message
       result.style.cssText='display:block;background:rgba(220,80,80,.08);color:#f87171;border:1px solid rgba(220,80,80,.2);margin-top:14px;font-size:13px;text-align:center;padding:14px;border-radius:12px'
